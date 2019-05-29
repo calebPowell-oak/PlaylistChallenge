@@ -9,6 +9,24 @@ public class Music {
     }
 
     public Integer selection(Integer startIndex, String selection){
-        return null;
+        Integer upCount = 0;
+        Integer downCount = 0;
+        Integer index = startIndex;
+        while(!playList[index].equals(selection)){
+            index--;
+            if(index < 0){
+                index = playList.length - 1;
+            }
+            downCount++;
+        }
+        index = startIndex;
+        while(!playList[index].equals(selection)){
+            index++;
+            if(index > playList.length - 1){
+                index = 0;
+            }
+            upCount++;
+        }
+        return downCount < upCount ? downCount : upCount;
     }
 }
